@@ -20,7 +20,7 @@ export const GET: APIRoute = async ({ site, url }) => {
 		entry("/"),
 		entry("/posts/"),
 		...posts.map((p) => entry(`/posts/${p.id}/`, p.data.updatedAt ?? p.data.publishedAt)),
-		...pages.map((p) => entry(`/pages/${p.id}/`, p.data.updatedAt)),
+		...pages.filter((p) => p.id !== "home").map((p) => entry(`/pages/${p.id}/`, p.data.updatedAt)),
 		...tags.map((t) => entry(`/tag/${t.slug}/`)),
 		...categories.map((t) => entry(`/category/${t.slug}/`)),
 	];

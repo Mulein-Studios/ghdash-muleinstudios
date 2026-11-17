@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"Written in 2000, brought to music in 2026\"}]},{\"_type\":\"embed\",\"_key\":\"b2\",\"url\":\"https://youtu.be/l1gEe8hXlnY\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:52:43.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6N8B20DMQTNYKH78Z\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-ny9nxhny9nxhny9n-220.webp\"}}",
+	"id": "01M7JQ4JH6DA4G4X3SNB46DDBD",
+	"live_revision_id": "01M7JQ4JH6BM28DNAFGSBMZAMG",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:52:43.000Z",
+	"scheduled_at": null,
+	"slug": "the-approach-to-infinity",
+	"status": "published",
+	"title": "The Approach to Infinity",
+	"translation_group": "01M7JQ4JH6DA4G4X3SNB46DDBD",
+	"updated_at": "2026-08-30T14:08:27.000Z",
+	"version": 1
+}

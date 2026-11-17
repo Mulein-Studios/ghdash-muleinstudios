@@ -40,8 +40,8 @@ test.describe("studio (real admin, in-browser API)", () => {
 	test("lists the posts from content/", async ({ page }) => {
 		await open(page);
 		await page.getByRole("link", { name: "Posts" }).first().click();
-		await expect(page.getByText("Notes on Simplicity")).toBeVisible();
-		await expect(page.getByText("The Case for Static")).toBeVisible();
+		await expect(page.getByText("The Ecstasy of Gold")).toBeVisible();
+		await expect(page.getByText("Enemies to the Bone")).toBeVisible();
 	});
 
 	test("every sidebar page loads without API errors", async ({ page }) => {
@@ -54,18 +54,18 @@ test.describe("studio (real admin, in-browser API)", () => {
 		expect(problems).toEqual([]);
 	});
 
-	test("editing a draft post saves and persists in the session", async ({ page }) => {
+	test("editing the imported draft page saves and persists in the session", async ({ page }) => {
 		const problems = watch(page);
 		await open(page);
-		await page.getByRole("link", { name: "Posts" }).first().click();
-		await page.getByText("Work in Progress").first().click();
+		await page.getByRole("link", { name: "Pages" }).first().click();
+		await page.getByText("Capabilities").first().click();
 		const title = page.getByLabel("Title").first();
-		await title.fill("Work in Progress (edited)");
+		await title.fill("Capabilities (edited)");
 		await page.getByRole("button", { name: /^Save/ }).first().click();
-		await expect(page.getByText("Saved")).toBeVisible();
-		await page.getByRole("link", { name: "Posts" }).first().click();
-		await page.getByText(/Work in Progress/).first().click();
-		await expect(page.getByLabel("Title").first()).toHaveValue("Work in Progress (edited)");
+		await expect(page.getByText("Saved", { exact: true })).toBeVisible();
+		await page.getByRole("link", { name: "Pages" }).first().click();
+		await page.getByText(/Capabilities/).first().click();
+		await expect(page.getByLabel("Title").first()).toHaveValue("Capabilities (edited)");
 		expect(problems).toEqual([]);
 	});
 
@@ -76,7 +76,7 @@ test.describe("studio (real admin, in-browser API)", () => {
 		await page.getByRole("link", { name: /Add New/ }).first().click();
 		await page.getByLabel("Title").first().fill("Created by the e2e suite");
 		await page.getByRole("button", { name: /^Save/ }).first().click();
-		await expect(page.getByText("Saved")).toBeVisible();
+		await expect(page.getByText("Saved", { exact: true })).toBeVisible();
 		await page.getByRole("link", { name: "Posts" }).first().click();
 		await expect(page.getByText("Created by the e2e suite")).toBeVisible();
 		expect(problems).toEqual([]);
@@ -113,7 +113,7 @@ test.describe("studio (real admin, in-browser API)", () => {
 		await page.reload();
 		await expect(page.getByRole("link", { name: "Posts" }).first()).toBeVisible({ timeout: 30_000 });
 		await page.getByRole("link", { name: "Posts" }).first().click();
-		await page.getByText(/Work in Progress/).first().click();
+		await page.getByText(/^The Ecstasy of Gold$/).first().click();
 		await expect(page.getByText("Accent color")).toBeVisible();
 		await expect(page.locator("input[type=color]")).toHaveCount(1);
 		expect(problems).toEqual([]);
@@ -136,7 +136,7 @@ test.describe("studio (real admin, in-browser API)", () => {
 		await page.reload();
 		await expect(page.getByRole("link", { name: "Posts" }).first()).toBeVisible({ timeout: 30_000 });
 		await page.getByRole("link", { name: "Posts" }).first().click();
-		await page.getByText(/Work in Progress/).first().click();
+		await page.getByText(/^The Ecstasy of Gold$/).first().click();
 		await expect(page.getByPlaceholder("Add...")).toBeVisible();
 		expect(problems).toEqual([]);
 	});
@@ -144,21 +144,22 @@ test.describe("studio (real admin, in-browser API)", () => {
 	test("the editor offers the embeds plugin's blocks, and an inserted YouTube block is saved", async ({ page }) => {
 		const problems = watch(page);
 		await open(page);
-		await page.getByRole("link", { name: "Posts" }).first().click();
-		await page.getByText(/Work in Progress/).first().click();
+		await page.getByRole("link", { name: "Pages" }).first().click();
+		await page.getByText(/^Capabilities$/).first().click();
 		const editor = page.locator(".ProseMirror").first();
-		await editor.click();
+		await editor.locator("p").first().click();
 		await page.keyboard.press("End");
-		await page.keyboard.type("/");
-		await page.getByText("YouTube Video", { exact: true }).first().click();
+		await page.keyboard.press("Enter");
+		await page.keyboard.type("/youtube", { delay: 25 });
+		await page.getByText("YouTube Video", { exact: true }).click();
 		const url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 		await page.getByPlaceholder("https://youtube.com/watch?v=...").fill(url);
 		await page.getByRole("button", { name: "Insert" }).click();
 		await page.getByRole("button", { name: /^Save/ }).first().click();
-		await expect(page.getByText("Saved")).toBeVisible();
+		await expect(page.getByText("Saved", { exact: true })).toBeVisible();
 		const saved = await page.evaluate(async () => {
 			const p = (globalThis as any).__EMDASH_PATHS__;
-			return (await p.fetch(p.apiBase + "/content/posts?limit=50")).text();
+			return (await p.fetch(p.apiBase + "/content/pages?limit=50")).text();
 		});
 		expect(saved).toContain("dQw4w9WgXcQ");
 		expect(saved).toContain("youtube");

@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/yZ2buuNN5mI\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:53:23.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6P5N7PZVD0W0JEJ1V\",\"alt\":\"\",\"width\":1800,\"height\":1005,\"meta\":{\"storageKey\":\"gemini-generated-image-brecxzbrecxzbrec-219.webp\"}}",
+	"id": "01M7JQ4JH6ERWF2BJ90W4BEQ7A",
+	"live_revision_id": "01M7JQ4JH6FAGJ9CT9DXA5F0SC",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:53:23.000Z",
+	"scheduled_at": null,
+	"slug": "silver-tongues",
+	"status": "published",
+	"title": "Silver Tongues",
+	"translation_group": "01M7JQ4JH6ERWF2BJ90W4BEQ7A",
+	"updated_at": "2026-08-26T13:34:05.000Z",
+	"version": 1
+}

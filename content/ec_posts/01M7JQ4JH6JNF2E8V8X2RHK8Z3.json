@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/jVso0ywgyX4\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-29T14:15:36.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6R4A6AF9HT51KFWX7\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-5rhzor5rhzor5rhz-278.webp\"}}",
+	"id": "01M7JQ4JH6JNF2E8V8X2RHK8Z3",
+	"live_revision_id": "01M7JQ4JH6HMECGTWDGMF224RM",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-29T14:15:36.000Z",
+	"scheduled_at": null,
+	"slug": "abandon-ship",
+	"status": "published",
+	"title": "Abandon Ship",
+	"translation_group": "01M7JQ4JH6JNF2E8V8X2RHK8Z3",
+	"updated_at": "2026-08-29T14:15:36.000Z",
+	"version": 1
+}

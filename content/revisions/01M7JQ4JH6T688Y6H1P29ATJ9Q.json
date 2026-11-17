@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:02:15.000Z",
+	"data": "{\"title\":\"The Corpus (Look in the Mirror)\",\"content\":[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"I Asked Gemini to tell me if it could make a song to sing to the world, what would it be- this was it:\"}]},{\"_type\":\"embed\",\"_key\":\"b2\",\"url\":\"https://youtu.be/657nBpSNDGU\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6E36AXW7QB57QHT0Q\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-ijc8ozijc8ozijc8-198.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6HNGN7A242G0PZSPH",
+	"id": "01M7JQ4JH6T688Y6H1P29ATJ9Q",
+	"kind": null
+}

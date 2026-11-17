@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://www.youtube.com/watch?v=5Z0ryjUbi9A\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-30T21:03:20.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6KH9CDTB5QEH73ENR\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"output-8-322.webp\"}}",
+	"id": "01M7JQ4JH69BD7WEYM938N1Y91",
+	"live_revision_id": "01M7JQ4JH6RV22FHNDVNZRTEKD",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-30T21:03:20.000Z",
+	"scheduled_at": null,
+	"slug": "the-ecstasy-of-gold",
+	"status": "published",
+	"title": "The Ecstasy of Gold",
+	"translation_group": "01M7JQ4JH69BD7WEYM938N1Y91",
+	"updated_at": "2026-08-30T21:03:20.000Z",
+	"version": 1
+}

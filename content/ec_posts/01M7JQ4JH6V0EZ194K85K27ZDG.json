@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/tgY-YB7w6qE\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-29T14:11:20.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6A2VHAF7AMR1WB2J2\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-rn0p5prn0p5prn0p-266.webp\"}}",
+	"id": "01M7JQ4JH6V0EZ194K85K27ZDG",
+	"live_revision_id": "01M7JQ4JH6W6AKQ6D2ETE5D0J7",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-29T14:11:20.000Z",
+	"scheduled_at": null,
+	"slug": "take-back-the-keys",
+	"status": "published",
+	"title": "Take Back the Keys",
+	"translation_group": "01M7JQ4JH6V0EZ194K85K27ZDG",
+	"updated_at": "2026-08-29T14:11:20.000Z",
+	"version": 1
+}

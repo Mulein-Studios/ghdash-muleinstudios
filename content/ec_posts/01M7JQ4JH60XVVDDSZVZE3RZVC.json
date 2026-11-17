@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/hQbuH5K_wSw\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:48:51.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6J89M48FSC74Y3B38\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-30bauu30bauu30ba-226.webp\"}}",
+	"id": "01M7JQ4JH60XVVDDSZVZE3RZVC",
+	"live_revision_id": "01M7JQ4JH65QDWCST5QTFEFSSA",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:48:51.000Z",
+	"scheduled_at": null,
+	"slug": "paper-boats",
+	"status": "published",
+	"title": "Paper Boats",
+	"translation_group": "01M7JQ4JH60XVVDDSZVZE3RZVC",
+	"updated_at": "2026-08-26T13:43:15.000Z",
+	"version": 1
+}

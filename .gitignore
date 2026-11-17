@@ -18,3 +18,8 @@ public/media/
 public/studio/media-sw.js
 public/fonts
 .gitdash/
+
+# Local WordPress migration backups
+.DS_Store
+/jetpack-backup-muleinstudios-com-*.tar.gz
+/muleinstudios.WordPress.*.xml

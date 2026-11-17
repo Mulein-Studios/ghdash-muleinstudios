@@ -4,13 +4,19 @@ import { expect, test } from "@playwright/test";
 
 import { BASE } from "./base";
 
-const pages = ["", "posts/", "pages/about/", "category/development/", "tag/creativity/", "rss.xml"];
+const pages = ["", "posts/", "pages/portfolio/", "pages/support/", "category/music/", "rss.xml"];
 
 test.describe("static site", () => {
+	test.beforeEach(async ({ page }) => {
+		await page.route("https://use.typekit.net/**", (route) => route.fulfill({ contentType: "text/css", body: "" }));
+		await page.route("https://www.youtube.com/embed/**", (route) => route.fulfill({ contentType: "text/html", body: "" }));
+	});
 	for (const path of pages) {
 		test(`/${path} renders`, async ({ page }) => {
 			const failed: string[] = [];
-			page.on("requestfailed", (r) => failed.push(r.url()));
+			page.on("requestfailed", (r) => {
+				if (new URL(r.url()).hostname === "localhost") failed.push(r.url());
+			});
 			const res = await page.goto(path);
 			expect(res?.status(), path).toBe(200);
 			expect(failed).toEqual([]);
@@ -26,10 +32,10 @@ test.describe("static site", () => {
 
 	test("a post page shows its title", async ({ page }) => {
 		await page.goto("posts/");
-		const first = page.locator("a[href*='/posts/']").first();
-		const title = (await first.innerText()).trim();
+		const first = page.locator("main .post__link").first();
+		const title = await first.getByRole("heading").innerText();
 		await first.click();
-		await expect(page.locator("h1").first()).toContainText(title.split("\n")[0]!.slice(0, 20));
+		await expect(page.locator("h1").first()).toContainText(title);
 	});
 
 	test("a long archive is split into pages with plain links", async ({ page }) => {
@@ -46,13 +52,13 @@ test.describe("static site", () => {
 
 	test("search finds a post and links to it under the base path", async ({ page }) => {
 		await page.goto("search/");
-		await page.locator("#search-query").fill("weekend");
+		await page.locator("#search-query").fill("trolley");
 		await page.locator("#search-form").getByRole("button", { name: "Search" }).click();
 		const link = page.locator("#search-list a").first();
-		await expect(link).toContainText(/weekend/i);
+		await expect(link).toContainText(/the trolley problem/i);
 		expect(await link.getAttribute("href")).toMatch(new RegExp(`^${BASE}/posts/.+`));
 		await link.click();
-		await expect(page.locator("h1").first()).toContainText(/weekend/i);
+		await expect(page.locator("h1").first()).toContainText(/the trolley problem/i);
 	});
 
 	test("search says so when nothing matches", async ({ page }) => {
@@ -73,11 +79,21 @@ test.describe("static site", () => {
 		expect(rss).toMatch(new RegExp(`<link>[^<]*${BASE}/posts/[^<]+</link>`));
 	});
 
+	test("legacy WordPress links resolve to the migrated content", async ({ page }) => {
+		await page.goto("2026/08/25/hope/");
+		await expect(page).toHaveURL(`${BASE}/posts/hope/`);
+		await expect(page.getByRole("heading", { name: "Hope", exact: true })).toBeVisible();
+		await expect(page.locator('iframe[src*="youtube.com/embed/"]')).toHaveCount(2);
+		await expect.poll(() => page.locator(".record__artwork img").evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+		await page.goto("portfolio/");
+		await expect(page.getByRole("heading", { name: "Portfolio", exact: true })).toBeVisible();
+	});
+
 	test("a post shows the discussion thread only when giscus is configured", async ({ page }) => {
-		await page.goto("posts/notes-on-simplicity/");
+		await page.goto("posts/hope/");
 		const script = page.locator('script[src="https://giscus.app/client.js"]');
 		if (existsSync("giscus.json")) {
-			await expect(script).toHaveAttribute("data-term", "notes-on-simplicity");
+			await expect(script).toHaveAttribute("data-term", "hope");
 			await expect(page.getByRole("heading", { name: "Discussion" })).toBeVisible();
 		} else {
 			await expect(script).toHaveCount(0);

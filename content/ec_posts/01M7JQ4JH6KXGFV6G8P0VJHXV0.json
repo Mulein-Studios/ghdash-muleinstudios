@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/xXU7F82rd2I\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:47:43.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6SWFZW5G7GPE4TN8Z\",\"alt\":\"\",\"width\":1408,\"height\":768,\"meta\":{\"storageKey\":\"gemini-generated-image-8mbewn8mbewn8mbe-227.webp\"}}",
+	"id": "01M7JQ4JH6KXGFV6G8P0VJHXV0",
+	"live_revision_id": "01M7JQ4JH6YGNZ05P21XRWYK8E",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:47:43.000Z",
+	"scheduled_at": null,
+	"slug": "subspace-drift",
+	"status": "published",
+	"title": "Subspace Drift",
+	"translation_group": "01M7JQ4JH6KXGFV6G8P0VJHXV0",
+	"updated_at": "2026-08-26T13:45:02.000Z",
+	"version": 1
+}

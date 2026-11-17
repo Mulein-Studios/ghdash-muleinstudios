@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/DweWm6wRjIA\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-27T17:00:01.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH60A2V4RBVQ8F8PVT8\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-51q75u51q75u51q7-238.webp\"}}",
+	"id": "01M7JQ4JH6G6G1DYQAGAF295QS",
+	"live_revision_id": "01M7JQ4JH61WM8XF3K4SSE06AM",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-27T17:00:01.000Z",
+	"scheduled_at": null,
+	"slug": "brawndo",
+	"status": "published",
+	"title": "Brawndo",
+	"translation_group": "01M7JQ4JH6G6G1DYQAGAF295QS",
+	"updated_at": "2026-08-27T17:00:01.000Z",
+	"version": 1
+}

@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/YU-d_BA02nA\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:44:06.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH684WCK6CM4RMSKCCM\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"barbican-3000-jpeg-228.webp\"}}",
+	"id": "01M7JQ4JH60P2Y3417SR4T3GWA",
+	"live_revision_id": "01M7JQ4JH6Z04X1RYAQG5X8ZCB",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:44:06.000Z",
+	"scheduled_at": null,
+	"slug": "barbican-glass-tunnel",
+	"status": "published",
+	"title": "Barbican - Glass Tunnel",
+	"translation_group": "01M7JQ4JH60P2Y3417SR4T3GWA",
+	"updated_at": "2026-08-26T13:47:15.000Z",
+	"version": 1
+}

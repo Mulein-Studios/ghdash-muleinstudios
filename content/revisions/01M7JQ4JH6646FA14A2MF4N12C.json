@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:17:35.000Z",
+	"data": "{\"title\":\"The Trolley Problem\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/VJBa4bFSPdA\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6G89FZTNE45QG0J1Y\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-chbpmmchbpmmchbp-208.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6GWMG1B37Q15THWPF",
+	"id": "01M7JQ4JH6646FA14A2MF4N12C",
+	"kind": null
+}

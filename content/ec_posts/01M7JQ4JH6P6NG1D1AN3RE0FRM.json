@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/tfZzNMnoCgs\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-29T14:14:16.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6CDE2DVQ4Y1MQ40BE\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"output-275.webp\"}}",
+	"id": "01M7JQ4JH6P6NG1D1AN3RE0FRM",
+	"live_revision_id": "01M7JQ4JH6SF30EWTX72W86F50",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-29T14:14:16.000Z",
+	"scheduled_at": null,
+	"slug": "no-one-at-the-wheel",
+	"status": "published",
+	"title": "No One at the Wheel",
+	"translation_group": "01M7JQ4JH6P6NG1D1AN3RE0FRM",
+	"updated_at": "2026-08-29T14:14:16.000Z",
+	"version": 1
+}

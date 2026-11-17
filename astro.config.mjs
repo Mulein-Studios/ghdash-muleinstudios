@@ -1,6 +1,6 @@
 import node from "@astrojs/node";
 import react from "@astrojs/react";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig } from "astro/config";
 import { embedsPlugin } from "@emdash-cms/plugin-embeds";
 import { basePath, siteUrl } from "@digitaldefiance/gitdash-pages/host";
 import emdash, { local } from "emdash/astro";
@@ -40,26 +40,11 @@ export default defineConfig({
 			database: sqlite({ url: "file:./data.db" }),
 			storage: local({
 				directory: "./uploads",
-				baseUrl: "/_emdash/api/media/file",
+				// GitDash copies repository media to public/media before prerendering.
+				baseUrl: "/media",
 			}),
 			plugins: [embedsPlugin()],
 		}),
-	],
-	fonts: [
-		{
-			provider: fontProviders.google(),
-			name: "Inter",
-			cssVariable: "--font-body",
-			weights: [400, 500, 600, 700],
-			fallbacks: ["sans-serif"],
-		},
-		{
-			provider: fontProviders.google(),
-			name: "JetBrains Mono",
-			cssVariable: "--font-mono",
-			weights: [400, 500],
-			fallbacks: ["monospace"],
-		},
 	],
 	devToolbar: { enabled: false },
 });

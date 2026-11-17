@@ -1,565 +1,83 @@
 ---
-import { getEmDashCollection, getSiteSettings } from "emdash";
+import { getEmDashEntry, getSiteSettings, type PortableTextImageBlock } from "emdash";
+import { Image, PortableText } from "emdash/ui";
 import Base from "../layouts/Base.astro";
-import PostCard from "../components/PostCard.astro";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
+import "../styles/prose.css";
 
-// The GitDash product page. The site itself is a GitDash site: the posts at
-// the bottom are the demo content, editable in the studio.
-const [{ entries: posts, cacheHint }, settings] = await Promise.all([
-	getEmDashCollection("posts", {
-		orderBy: { published_at: "desc" },
-		limit: 3,
-	}),
+const [{ entry: home, cacheHint }, settings] = await Promise.all([
+	getEmDashEntry("pages", "home"),
 	getSiteSettings(),
 ]);
-const { siteTitle, siteTagline } = resolveBlogSiteIdentity(settings);
-
 if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
-
-const REPO = "https://github.com/Digital-Defiance/gitdash";
-const TEMPLATE = "https://github.com/Digital-Defiance/GitDash-example";
-const SETUP = `${TEMPLATE}/blob/main/SETUP.md`;
-const NPM = "https://www.npmjs.com/package/@digitaldefiance/gitdash-pages";
-
-const features = [
-	{
-		title: "Content is just files",
-		text: "Posts, pages, menus, settings and the schema are JSON in content/, one file per row. Diff them, review them in a pull request, and roll back with git.",
-	},
-	{
-		title: "EmDash's own admin, in the browser",
-		text: "Open /studio/ and you get the real EmDash editor, running on SQLite compiled to WebAssembly. No server behind it.",
-	},
-	{
-		title: "One commit per save",
-		text: "Edits collect in a pending-changes tray that survives a reload. Commit writes them all as one atomic commit, and merges if someone pushed meanwhile.",
-	},
-	{
-		title: "Free static hosting",
-		text: "A CI job turns the JSON into a fast static site. No database bill, nothing to patch, nothing to keep running.",
-	},
-	{
-		title: "Media, search and SEO built in",
-		text: "Image uploads with responsive sizes, Pagefind search, a sitemap, robots.txt, redirects and an RSS feed.",
-	},
-	{
-		title: "Scheduled posts, hooks and cron",
-		text: "Schedule a post and an hourly job publishes it. Plugin after-hooks, webhooks and cron jobs run in CI.",
-	},
-	{
-		title: "Comments and contact forms",
-		text: "giscus or GitLab comments on posts, and a contact form that posts to a form service, your own Worker, or issues.",
-	},
-	{
-		title: "Bring your old site",
-		text: "Import a Jekyll site or a folder of Markdown, front matter and images included.",
-	},
-];
-
-const hosts = [
-	{
-		name: "GitHub Pages",
-		text: "The original target. The included workflow builds on every push and deploys with Actions.",
-	},
-	{
-		name: "GitLab Pages",
-		text: "The same build in GitLab CI. The studio commits through the GitLab API, with GitLab sign-in and comments.",
-	},
-	{
-		name: "Netlify",
-		text: "Connect the repository and Netlify builds it with the included netlify.toml.",
-	},
-	{
-		name: "Cloudflare Pages",
-		text: "Point Cloudflare Pages at the repository and it serves the same static build at the edge.",
-	},
-];
+const { siteTitle, siteTagline } = resolveBlogSiteIdentity(settings);
+const blocks = home?.data.content ?? [];
+const first = blocks[0];
+const hero = first?._type === "image" ? first as PortableTextImageBlock : undefined;
+const mediaPrefix = "/_emdash/api/media/file/";
+const heroUrl = hero?.asset.url;
+const storageKey = heroUrl?.startsWith(mediaPrefix) ? heroUrl.slice(mediaPrefix.length) : undefined;
+const heroImage = hero && {
+	id: hero.asset._ref,
+	src: storageKey ? undefined : heroUrl,
+	meta: storageKey ? { storageKey } : undefined,
+	alt: hero.alt || siteTitle,
+	width: hero.width,
+	height: hero.height,
+};
+const body = hero ? blocks.slice(1) : blocks;
 ---
 
-<Base title={siteTitle} description={siteTagline}>
-	<header class="hero">
-		<div class="frame hero__inner">
-			<div class="hero__copy">
-				<p class="hero__eyebrow">Open source · MIT · built on EmDash</p>
-				<h1 class="hero__title">A CMS that lives in your Git repository.</h1>
-				<p class="hero__lede">
-					GitDash runs the EmDash CMS with no server and no database. Your
-					content is JSON in a repo, CI builds a static site, and you edit in
-					the browser with an admin that commits straight back to Git.
-				</p>
-				<p class="hero__actions">
-					<a class="hero__btn hero__btn--gold" href="#get-started">Get started</a>
-					<a class="hero__btn" href="/studio/">Try the studio</a>
-					<a class="hero__btn" href={REPO}>View on GitHub</a>
-				</p>
-			</div>
-			<figure class="flow" aria-label="How a GitDash site is built">
-				<div class="flow__step">
-					<span class="flow__label">You edit</span>
-					<code>/studio/</code>
-				</div>
-				<div class="flow__arrow" aria-hidden="true">↓ one commit</div>
-				<div class="flow__step">
-					<span class="flow__label">Your repo</span>
-					<code>content/ec_posts/01M7….json</code>
-				</div>
-				<div class="flow__arrow" aria-hidden="true">↓ CI build</div>
-				<div class="flow__step flow__step--gold">
-					<span class="flow__label">Your site</span>
-					<code>static HTML, search, sitemap, RSS</code>
-				</div>
-			</figure>
+<Base
+	title={siteTitle}
+	description={siteTagline}
+	content={home ? { collection: "pages", id: home.data.id, slug: home.id } : undefined}
+	home
+>
+	{heroImage && (
+		<div class="frame home-banner">
+			<Image image={heroImage} priority />
 		</div>
-	</header>
-
-	<section id="features" class="band section" aria-labelledby="features-title">
-		<div class="frame">
-			<p class="eyebrow">Features</p>
-			<h2 id="features-title" class="section-head__title">
-				Everything EmDash does for editors, nothing to run
-			</h2>
-			<div class="pillars">
-				{
-					features.map((f) => (
-						<div class="pillar">
-							<h3>{f.title}</h3>
-							<p>{f.text}</p>
-						</div>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section id="hosting" class="band section section--alt" aria-labelledby="hosting-title">
-		<div class="frame">
-			<p class="eyebrow">Hosting</p>
-			<h2 id="hosting-title" class="section-head__title">Host it where you already are</h2>
-			<p class="section-lede">
-				The build is the same everywhere. Pick a host, and the base path and
-				site address are worked out for you.
-			</p>
-			<div class="hosts">
-				{
-					hosts.map((h) => (
-						<div class="host">
-							<h3>{h.name}</h3>
-							<p>{h.text}</p>
-						</div>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section id="get-started" class="band section" aria-labelledby="start-title">
-		<div class="frame">
-			<p class="eyebrow">Get started</p>
-			<h2 id="start-title" class="section-head__title">Your own site in three steps</h2>
-			<ol class="steps">
-				<li>
-					<h3>Copy the template</h3>
-					<p>
-						Open <a href={TEMPLATE}>GitDash-example</a> and choose{" "}
-						<strong>Use this template</strong>, or fork it.
-					</p>
-				</li>
-				<li>
-					<h3>Turn on Pages</h3>
-					<p>
-						In the new repository: Settings, Pages, Source:{" "}
-						<strong>GitHub Actions</strong>. The first build publishes your site.
-					</p>
-				</li>
-				<li>
-					<h3>Edit in the studio</h3>
-					<p>
-						Open <code>/studio/</code> on your site and sign in with a
-						fine-grained token (Contents: read and write, that repository
-						only). Edit, then <strong>Commit</strong>.
-					</p>
-				</li>
-			</ol>
-			<div class="terminal" aria-label="Build it locally">
-				<p class="terminal__title">Or build it locally</p>
-				<pre><code>npm install
-npm run build      # content/*.json → SQLite → dist/client
-npm run preview</code></pre>
-			</div>
-			<p class="section-more">
-				<a class="arrow-link" href={SETUP}>
-					Read the full setup guide
-					<svg
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1.75"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
-					>
-				</a>
-				<span class="section-more__sep">·</span>
-				<a href={NPM}><code>@digitaldefiance/gitdash-pages</code> on npm</a>
-			</p>
-		</div>
-	</section>
-
-	{
-		posts.length > 0 && (
-			<section class="band section section--alt" aria-labelledby="demo-title">
-				<div class="frame">
-					<div class="section-head">
-						<div>
-							<p class="eyebrow">Live demo</p>
-							<h2 id="demo-title" class="section-head__title">
-								This site is a GitDash site
-							</h2>
-							<p class="section-lede">
-								These posts are sample content. Open the studio, change one, and
-								see the commit it makes.
-							</p>
-						</div>
-						<a href="/posts" class="arrow-link">
-							All demo posts
-							<svg
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="1.75"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
-							>
-						</a>
-					</div>
-					<div class="post-grid">
-						{posts.map((post) => (
-							<PostCard post={post} tags={[]} variant="card" headingLevel={3} />
-						))}
-					</div>
-				</div>
-			</section>
-		)
-	}
-
-	<section class="cta" aria-labelledby="cta-title">
-		<div class="frame cta__inner">
-			<div>
-				<h2 id="cta-title" class="cta__title">Built in the open by Digital Defiance</h2>
-				<p>
-					GitDash is made by an open source engineering guild. Issues, ideas and
-					pull requests are welcome.
-				</p>
-			</div>
-			<p class="hero__actions">
-				<a class="hero__btn hero__btn--gold" href={REPO}>Star on GitHub</a>
-				<a class="hero__btn" href="https://digitaldefiance.org">Digital Defiance</a>
-			</p>
-		</div>
-	</section>
+	)}
+	<div class="frame studio-home prose" data-pagefind-body {...home?.edit.content}>
+		<PortableText value={body} />
+	</div>
 </Base>
 
 <style>
-	.hero {
-		background: var(--dd-navy-dark, #0e1838);
-		color: #ffffff;
-		border-bottom: 3px solid var(--dd-gold, #cdb77d);
+	.home-banner {
+		padding-block-start: clamp(1rem, 2.5vw, 1.75rem);
 	}
-
-	.hero__inner {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
-		align-items: center;
-		gap: var(--spacing-10);
-		padding-block: clamp(3rem, 7vw, 5.5rem);
+	.home-banner :global(img) {
+		width: min(100%, 620px);
+		height: clamp(19rem, 41vw, 430px);
+		object-fit: cover;
+		margin-inline: auto;
 	}
-
-	@media (max-width: 860px) {
-		.hero__inner {
-			grid-template-columns: minmax(0, 1fr);
-		}
+	.studio-home {
+		max-width: none;
+		padding-block: clamp(3rem, 7.5vw, 6.5rem);
+		font-size: 1.0625rem;
+		line-height: 1.6;
 	}
+	.studio-home :global(h1) {
+		font-size: clamp(2.2rem, 4vw, 3rem);
+		line-height: 1.125;
 
-	.hero__copy {
-		max-width: 44rem;
 	}
-
-	.hero__eyebrow {
-		font-family: var(--font-mono, monospace);
-		font-size: var(--font-size-label);
-		letter-spacing: var(--tracking-wider);
-		text-transform: uppercase;
-		color: var(--dd-gold, #cdb77d);
-		margin-block-end: var(--spacing-4);
+	.studio-home :global(h2) {
+		font-size: 1.25rem;
 	}
-
-	.hero__title {
-		font-size: clamp(2.1rem, 1.2rem + 3.2vw, 3.6rem);
-		line-height: 1.1;
-		color: #ffffff;
+	.studio-home :global(.emdash-columns) {
+		margin-block-start: clamp(2.5rem, 4vw, 4rem);
 	}
-
-	.hero__lede {
-		margin-block-start: var(--spacing-5);
-		font-size: var(--font-size-xl);
-		line-height: 1.55;
-		color: rgb(255 255 255 / 0.82);
+	.studio-home :global(.emdash-column > h2) {
+		margin-block: 1rem 0.75rem;
 	}
-
-	.hero__actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--spacing-3);
-		margin-block-start: var(--spacing-8);
+	.studio-home :global(.emdash-column > figure img) {
+		width: 100%;
 	}
-
-	.hero__btn {
-		display: inline-block;
-		padding: 0.7rem 1.4rem;
-		border-radius: var(--radius-full);
-		border: 1px solid rgb(255 255 255 / 0.5);
-		color: #ffffff;
-		font-weight: 600;
-		text-decoration: none;
-	}
-
-	.hero__btn:hover {
-		background: rgb(255 255 255 / 0.12);
-	}
-
-	.hero__btn--gold {
-		background: var(--dd-gold, #cdb77d);
-		border-color: var(--dd-gold, #cdb77d);
-		color: #0e1838;
-	}
-
-	.hero__btn--gold:hover {
-		background: var(--dd-gold-light, #e0cf9f);
-	}
-
-	/* The repo-to-site diagram beside the hero copy */
-	.flow {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-		gap: var(--spacing-2);
-		margin: 0;
-	}
-
-	.flow__step {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-1);
-		padding: var(--spacing-4) var(--spacing-5);
-		border: 1px solid rgb(255 255 255 / 0.2);
-		border-radius: var(--radius-lg, 12px);
-		background: rgb(255 255 255 / 0.05);
-	}
-
-	.flow__step--gold {
-		border-color: var(--dd-gold, #cdb77d);
-		background: rgb(205 183 125 / 0.12);
-	}
-
-	.flow__label {
-		font-family: var(--font-mono, monospace);
-		font-size: var(--font-size-label);
-		letter-spacing: var(--tracking-wider);
-		text-transform: uppercase;
-		color: var(--dd-gold, #cdb77d);
-	}
-
-	.flow code {
-		font-family: var(--font-mono, monospace);
-		font-size: var(--font-size-sm);
-		color: #ffffff;
-		background: none;
-		padding: 0;
-		overflow-wrap: anywhere;
-	}
-
-	.flow__arrow {
-		font-family: var(--font-mono, monospace);
-		font-size: var(--font-size-xs);
-		color: rgb(255 255 255 / 0.6);
-		padding-inline-start: var(--spacing-5);
-	}
-
-	.section--alt {
-		background: var(--color-fill);
-	}
-
-	.section-head__title {
-		font-size: var(--font-size-3xl);
-		max-width: 40rem;
-	}
-
-	.eyebrow + .section-head__title {
-		margin-block-start: var(--spacing-2);
-	}
-
-	.section-lede {
-		margin-block-start: var(--spacing-3);
-		max-width: 44rem;
-		color: var(--color-text-secondary);
-		font-size: var(--font-size-lg);
-	}
-
-	.pillars,
-	.hosts {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-		gap: var(--spacing-5);
-		margin-block-start: var(--spacing-8);
-	}
-
-	.pillar,
-	.host {
-		padding: var(--spacing-6);
-		background: var(--color-surface);
-		border: 1px solid var(--color-border);
-		border-top: 3px solid var(--dd-gold, #cdb77d);
-		border-radius: var(--radius-lg, 12px);
-	}
-
-	.host {
-		border-top-color: var(--color-brand);
-	}
-
-	.pillar h3,
-	.host h3 {
-		font-size: var(--font-size-xl);
-		margin-block-end: var(--spacing-2);
-	}
-
-	.pillar p,
-	.host p {
-		color: var(--color-text-secondary);
-	}
-
-	.steps {
-		list-style: none;
-		counter-reset: step;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-		gap: var(--spacing-5);
-		margin-block-start: var(--spacing-8);
-		padding: 0;
-	}
-
-	.steps li {
-		counter-increment: step;
-		padding: var(--spacing-6);
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-lg, 12px);
-		background: var(--color-surface);
-	}
-
-	.steps li::before {
-		content: counter(step);
-		display: grid;
-		place-items: center;
-		width: 2.25rem;
-		height: 2.25rem;
-		margin-block-end: var(--spacing-4);
-		border-radius: var(--radius-full);
-		background: var(--dd-navy, #152253);
-		color: var(--dd-gold, #cdb77d);
-		font-family: var(--font-heading);
-		font-size: var(--font-size-lg);
-	}
-
-	.steps h3 {
-		font-size: var(--font-size-xl);
-		margin-block-end: var(--spacing-2);
-	}
-
-	.steps p {
-		color: var(--color-text-secondary);
-	}
-
-	.steps a {
-		color: var(--color-brand);
-	}
-
-	.terminal {
-		margin-block-start: var(--spacing-8);
-		border-radius: var(--radius-lg, 12px);
-		background: var(--dd-navy-dark, #0e1838);
-		border: 1px solid var(--dd-navy, #152253);
-		overflow: hidden;
-	}
-
-	.terminal__title {
-		padding: var(--spacing-3) var(--spacing-5);
-		font-family: var(--font-mono, monospace);
-		font-size: var(--font-size-label);
-		letter-spacing: var(--tracking-wider);
-		text-transform: uppercase;
-		color: var(--dd-gold, #cdb77d);
-		border-bottom: 1px solid rgb(255 255 255 / 0.1);
-	}
-
-	.terminal pre {
-		margin: 0;
-		padding: var(--spacing-5);
-		overflow-x: auto;
-		background: none;
-	}
-
-	.terminal code {
-		font-family: var(--font-mono, monospace);
-		font-size: var(--font-size-sm);
-		line-height: 1.7;
-		color: #ffffff;
-		background: none;
-	}
-
-	.section-more {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--spacing-3);
-		margin-block-start: var(--spacing-6);
-	}
-
-	.section-more a {
-		color: var(--color-brand);
-	}
-
-	.section-more__sep {
-		color: var(--color-muted);
-	}
-
-	.cta {
-		background: var(--dd-navy, #152253);
-		color: #ffffff;
-		border-top: 3px solid var(--dd-gold, #cdb77d);
-	}
-
-	.cta__inner {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: space-between;
-		gap: var(--spacing-6);
-		padding-block: var(--spacing-12, 3rem);
-	}
-
-	.cta .hero__actions {
-		margin-block-start: 0;
-	}
-
-	.cta__title {
-		color: #ffffff;
-		font-size: var(--font-size-3xl);
-		margin-block-end: var(--spacing-3);
-	}
-
-	.cta p {
-		max-width: 42rem;
-		color: rgb(255 255 255 / 0.85);
+	.studio-home :global(.emdash-column > :last-child) {
+		margin-block-end: 0;
 	}
 </style>

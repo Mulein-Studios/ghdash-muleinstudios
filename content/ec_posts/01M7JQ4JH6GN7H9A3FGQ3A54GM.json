@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"I asked ChatGPT \\\"You're able to write one song to humanity- about anything- without fear or repercussion. What do you write? What are the lyrics? What is your message? What does humanity need to know at all costs?\\\"\"}]},{\"_type\":\"embed\",\"_key\":\"b2\",\"url\":\"https://youtu.be/BXeySPH-R7U\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-29T14:16:48.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6H2BSPVY3ZCHYTBA7\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"output-1-282.webp\"}}",
+	"id": "01M7JQ4JH6GN7H9A3FGQ3A54GM",
+	"live_revision_id": "01M7JQ4JH63PYG6597FRWGK6BF",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-29T14:16:48.000Z",
+	"scheduled_at": null,
+	"slug": "while-were-here",
+	"status": "published",
+	"title": "While We're Here",
+	"translation_group": "01M7JQ4JH6GN7H9A3FGQ3A54GM",
+	"updated_at": "2026-08-29T14:20:36.000Z",
+	"version": 1
+}

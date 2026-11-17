@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:25:43.000Z",
+	"data": "{\"title\":\"The Master Node\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/U7hHQJVGA6Y\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH69G9W97G6M9TP61JY\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"master-node-3000-214.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6FNAV5CST2VB358E3",
+	"id": "01M7JQ4JH6WYKPWGZGB14ZW2H9",
+	"kind": null
+}

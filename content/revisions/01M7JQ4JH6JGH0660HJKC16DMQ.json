@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:26:37.000Z",
+	"data": "{\"title\":\"The Ledger\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/4JQb1iPgtB8\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6XZE5JH6A7W6P12V9\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"ledger-3000-215.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6Z83SZ3C6JBSPBXSP",
+	"id": "01M7JQ4JH6JGH0660HJKC16DMQ",
+	"kind": null
+}

@@ -1,7 +1,6 @@
-// node --test test/   (needs `npm run db` first, as CI does before `npm test`)
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { mkdtempSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -16,9 +15,13 @@ function tree(dir, prefix = "") {
 	return out;
 }
 
-test("content/ -> data.db -> content/ gives back the same files", { skip: !existsSync("data.db") }, () => {
-	const out = join(mkdtempSync(join(tmpdir(), "roundtrip-")), "content");
-	execFileSync("npx", ["gitdash-pages", "export-content", "data.db", out], { stdio: "pipe" });
+test("content/ -> data.db -> content/ gives back the same files", () => {
+	const work = mkdtempSync(join(tmpdir(), "roundtrip-"));
+	const db = join(work, "data.db");
+	const out = join(work, "content");
+	// Prerendering can populate EmDash's redirect cache in the production build database.
+	execFileSync("npx", ["gitdash-pages", "build-db", db], { stdio: "pipe" });
+	execFileSync("npx", ["gitdash-pages", "export-content", db, out], { stdio: "pipe" });
 	const before = tree("content");
 	const after = tree(out);
 	assert.deepEqual([...after.keys()], [...before.keys()]);

@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-30T14:11:01.000Z",
+	"data": "{\"title\":\"Giving Up\",\"content\":[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"Written in 2000 brought to music in 2026\"}]},{\"_type\":\"embed\",\"_key\":\"b2\",\"url\":\"https://youtu.be/BPd3nqJPeag\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH62SAH5HDJA3FFFCE4\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-tbeqf9tbeqf9tbeq-222.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6FYK9MESSTPX06GD9",
+	"id": "01M7JQ4JH6JKAHPVCQNDA5VM6X",
+	"kind": null
+}

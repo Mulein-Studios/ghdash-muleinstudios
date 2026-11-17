@@ -40,7 +40,7 @@ try {
 	const storage = { _v: "placeholder", getItem() { return this._v; }, setItem(k, v) { this._v = v; }, removeItem() { this._v = null; } };
 	const c = createController({ db, freshNames, baseFiles: snapshot(db, freshNames), meta: { ...content.meta, branch, head: main }, fetchImpl, storage, store });
 
-	db.exec("update ec_posts set title = 'Live test edit' where slug = 'work-in-progress'");
+	db.exec("update ec_pages set title = 'Live test edit' where slug = 'capabilities'");
 	c.refresh();
 	assert.equal(c.getState().changes.length, 1);
 	await c.commit("Live test: edit a draft");
@@ -50,16 +50,16 @@ try {
 	assert.equal(after.parents[0].sha, main);
 	assert.equal(after.message, "Live test: edit a draft");
 	const changed = await api("GET", `/commits/${done.sha}`);
-	assert.deepEqual(changed.files.map((f) => f.filename.replace(/ec_posts\/[^/]+\.json$/, "ec_posts/<id>.json")), ["content/ec_posts/<id>.json"]);
+	assert.deepEqual(changed.files.map((f) => f.filename.replace(/ec_pages\/[^/]+\.json$/, "ec_pages/<id>.json")), ["content/ec_pages/<id>.json"]);
 	console.log("PASS commit: one parent, one file, message kept");
 
 	// Someone else pushes to the branch; our next commit must not overwrite it silently.
-	const other = Object.keys(content.tables.ec_posts).length ? content.tables.ec_posts.find((r) => r.slug !== "work-in-progress") : null;
+	const other = content.tables.ec_posts[0];
 	const otherPath = `content/ec_posts/${other.id}.json`;
 	const text = JSON.stringify({ ...Object.fromEntries(Object.keys(other).sort().map((k) => [k, other[k]])), title: "Changed upstream (live test)" }, null, "\t") + "\n";
 	const token = "placeholder";
 	await commitFiles({ token, owner, repo, branch, files: { [otherPath]: text }, message: "Live test: upstream change", fetchImpl });
-	db.exec("update ec_posts set title = 'Live test edit 2' where slug = 'work-in-progress'");
+	db.exec("update ec_pages set title = 'Live test edit 2' where slug = 'capabilities'");
 	c.refresh();
 	await c.commit("Live test: should conflict");
 	assert.equal(c.getState().status.kind, "conflict");

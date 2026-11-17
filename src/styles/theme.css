@@ -1,86 +1,62 @@
-/*
-  theme.css -- your theme overrides. This is the file to edit to
-  retheme the site.
-
-  Every design token lives in src/styles/tokens.css (colors, type
-  scale, spacing, layout, shadows) with its default value. Override any
-  of them here: declarations in this file are unlayered, so they always
-  beat the @layer base defaults in tokens.css.
-
-  Colors are defined with light-dark(). Overriding with a plain color
-  changes light and dark mode at once; use light-dark(<light>, <dark>)
-  to set different values per mode.
-
-  Set the three brand tokens together, as in the example below:
-  --color-on-brand defaults to near-black in dark mode.
-
-  Webfonts are loaded in astro.config.mjs (--font-body, --font-mono).
-  Swap the loaded font there; use overrides here for system fonts or a
-  separate heading face.
-
-  Example:
-
-  :root {
-    --color-brand: light-dark(#0f766e, #2dd4bf);
-    --color-brand-hover: light-dark(#115e59, #5eead4);
-    --color-on-brand: light-dark(#ffffff, #0a0a0a);
-    --font-heading: "Iowan Old Style", Georgia, serif;
-    --radius-lg: 18px;
-    --radius-xl: 24px;
-  }
-*/
-
-/*
-  GitDash product site: the Digital Defiance navy and gold, as on
-  digitaldefiance.org. Headings use Libre Baskerville (set in the
-  studio under Fonts), the open-licence stand-in for that site's
-  URW Baskerville.
-*/
+/* Smithland palette with the Mulein Studios WordPress color override. */
 :root {
-	--dd-navy: #152253;
-	--dd-navy-dark: #0e1838;
-	--dd-gold: #cdb77d;
-	--dd-gold-light: #e0cf9f;
-	--color-brand: light-dark(#152253, #cdb77d);
-	--color-brand-hover: light-dark(#243575, #e0cf9f);
-	--color-on-brand: light-dark(#ffffff, #0e1838);
-	--font-heading: "Libre Baskerville", Baskerville, "Iowan Old Style", Georgia, serif;
-	--font-weight-heading: 400;
-	--font-weight-display: 400;
-	--tracking-tight: -0.01em;
-	--tracking-snug: 0;
+	--color-bg: light-dark(#fff, #151820);
+	--color-surface: light-dark(#fff, #1c212d);
+	--color-fill: light-dark(#f7f9fd, #222838);
+	--color-text: light-dark(#252525, #f3f5fb);
+	--color-text-secondary: light-dark(#474747, #c7cedd);
+	--color-brand: light-dark(#3f63c8, #a5baff);
+	--color-brand-hover: light-dark(#304da3, #d3deff);
+	--color-on-brand: light-dark(#fff, #151820);
+	--font-body: var(--gitdash-body-font, Inter, system-ui, sans-serif);
+	--font-heading: var(--gitdash-heading-font, Georgia, serif);
+	--font-mono: ui-monospace, monospace;
+	--font-weight-heading: 700;
+	--font-weight-display: 700;
+	--leading-normal: 1.6;
+	--tracking-tight: -0.015em;
+	--content-width: 620px;
+	--wide-width: 1280px;
+	--frame-margin: 0px;
+	--frame-padding: clamp(1.25rem, 4vw, 2.5rem);
+	--nav-height: 6.25rem;
+	--radius-lg: 4px;
+	--radius-xl: 4px;
 }
 
-/* Navy header with a gold rule */
-:root .site-header.site-header {
-	background: var(--dd-navy);
-	border-bottom: 3px solid var(--dd-gold);
-	backdrop-filter: none;
+body::before,
+.band::before,
+.band::after,
+.site-header.site-header::before,
+.site-header.site-header::after {
+	display: none;
 }
 
-:root .site-header .brand__name,
-:root .site-header .site-nav a {
-	color: #ffffff !important;
+.site-header.site-header {
+	border-top: 10px solid var(--color-brand);
+	border-bottom: 0;
+	background: color-mix(in srgb, var(--color-bg) 93%, transparent);
 }
 
-:root .site-header .brand__mark {
-	background: var(--dd-gold);
-	color: var(--dd-navy-dark);
+.site-header .brand__name {
+	font-family: var(--font-heading);
+	font-size: clamp(1.375rem, 2.25vw, 1.8rem);
+	font-weight: 500;
 }
 
-:root .site-header .site-nav a:hover {
-	background: rgb(255 255 255 / 0.12) !important;
-	color: #ffffff !important;
+.site-header .site-nav a {
+	font-size: 1rem;
 }
 
-:root .site-header .site-nav a[aria-current] {
-	background: rgb(255 255 255 / 0.16) !important;
-	color: #ffffff !important;
-	box-shadow: inset 0 0 0 1px var(--dd-gold) !important;
+.site-footer {
+	background: var(--color-fill);
 }
 
-/* Plain, clean layout: no frame rails or crosshair marks */
-body::before { display: none !important; }
-.band::before, .band::after,
-.site-header::before, .site-header::after { content: none !important; }
-.site-header__inner { border-inline: 0 !important; }
+.prose a:where(:not([class*="emdash"])) {
+	color: var(--color-brand);
+	text-underline-offset: 0.15em;
+}
+
+.prose .emdash-column > p + p {
+	margin-block-start: 1em;
+}

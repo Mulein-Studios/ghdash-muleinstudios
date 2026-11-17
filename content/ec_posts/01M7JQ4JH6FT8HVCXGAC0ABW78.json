@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/EoKBbBTpRfI\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:57:11.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6ZCQWWMZFFTYG1E00\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-462iqc462iqc462i-210.webp\"}}",
+	"id": "01M7JQ4JH6FT8HVCXGAC0ABW78",
+	"live_revision_id": "01M7JQ4JH6S1Q94B3GX52MJDMM",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:57:11.000Z",
+	"scheduled_at": null,
+	"slug": "vultures-on-the-wire",
+	"status": "published",
+	"title": "Vultures on the Wire",
+	"translation_group": "01M7JQ4JH6FT8HVCXGAC0ABW78",
+	"updated_at": "2026-08-26T13:20:29.000Z",
+	"version": 1
+}

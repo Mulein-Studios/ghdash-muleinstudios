@@ -1,9 +1,9 @@
 {
-  "name": "gitdash-example",
+  "name": "gitdash-muleinstudios",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "An EmDash blog that runs entirely on GitHub Pages, with content stored as JSON in this repo.",
+  "description": "The Mulein Studios site, built with GitDash.",
   "emdash": {
     "seed": "seed/seed.json"
   },

@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-27T17:00:01.000Z",
+	"data": "{\"title\":\"Brawndo\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/DweWm6wRjIA\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH60A2V4RBVQ8F8PVT8\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-51q75u51q75u51q7-238.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6G6G1DYQAGAF295QS",
+	"id": "01M7JQ4JH61WM8XF3K4SSE06AM",
+	"kind": null
+}

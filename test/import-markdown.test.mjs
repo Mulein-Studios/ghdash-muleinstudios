@@ -32,10 +32,10 @@ test("import-markdown turns a Jekyll site into posts and pages in content/, with
 	for (const slug of ["alpha", "beta", "news"]) assert.ok(terms.some((t) => t.slug === slug), slug);
 	assert.equal(readdirSync(join(work, "media")).length, 1);
 	const library = JSON.parse(readFileSync(join(work, "content/media.json"), "utf8"));
-	assert.equal(library.length, 1);
-	assert.equal(library[0].storage_key, readdirSync(join(work, "media"))[0]);
-	assert.equal(library[0].filename, "pic.png");
-	assert.equal(library[0].status, "ready");
+	const imported = library.find((item) => item.filename === "pic.png");
+	assert.ok(imported);
+	assert.equal(imported.storage_key, readdirSync(join(work, "media"))[0]);
+	assert.equal(imported.status, "ready");
 	assert.ok(existsSync(join(work, "content/revisions")));
 
 	const again = run("import-markdown", resolve("test/fixtures/jekyll"));

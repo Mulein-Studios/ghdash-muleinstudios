@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:43:15.000Z",
+	"data": "{\"title\":\"Paper Boats\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/hQbuH5K_wSw\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6J89M48FSC74Y3B38\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-30bauu30bauu30ba-226.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH60XVVDDSZVZE3RZVC",
+	"id": "01M7JQ4JH65QDWCST5QTFEFSSA",
+	"kind": null
+}

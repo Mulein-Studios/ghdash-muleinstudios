@@ -63,12 +63,13 @@ test("a team member's photo is picked from the media library and committed with 
 	await page.keyboard.press("Escape");
 
 	await page.getByRole("link", { name: "Team" }).first().click();
-	await page.getByText("Ada Rivera").first().click();
+	await page.getByRole("link", { name: /Add New/ }).first().click();
+	await page.getByLabel("Name", { exact: true }).fill("Ada Rivera");
 	await page.getByRole("button", { name: "Select image" }).first().click();
-	await page.getByRole("dialog").locator("img").first().click();
+	await page.getByRole("dialog").getByRole("button", { name: "ada.png", exact: true }).click();
 	await page.getByRole("dialog").getByRole("button", { name: "Select", exact: true }).click();
 	await page.getByRole("button", { name: /^Save/ }).first().click();
-	await expect(page.getByText("Saved")).toBeVisible();
+	await expect(page.getByText("Saved", { exact: true })).toBeVisible();
 
 	await page.getByTestId("tray-button").click();
 	await page.getByLabel(/GitHub token/).fill("ghp_faketoken");
@@ -81,6 +82,5 @@ test("a team member's photo is picked from the media library and committed with 
 	const row = tree.find((t) => /^content\/ec_team\//.test(t.path) && t.content?.includes('"slug": "ada-rivera"'));
 	expect(row, "the team member file is in the commit").toBeTruthy();
 	const photo = JSON.parse(row!.content!).photo;
-	console.log('PHOTO', photo);
 	expect(photo).toBeTruthy();
 });

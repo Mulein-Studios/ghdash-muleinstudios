@@ -1,63 +1,19 @@
-# GitDash example
+# Mulein Studios
 
-An [EmDash](https://github.com/Digital-Defiance/gitdash) blog that runs entirely on GitHub Pages. There is no server and no database service: the content lives as JSON in `content/`, and a GitHub Action builds it into a static site on every push.
+The Mulein Studios site runs on GitDash, a fork of EmDash. GitDash builds the JSON in `content/` into a static Astro site and serves the browser editor at `/studio/`.
 
-Design and progress: [SPEC.md and TODO.md in the main repo](https://github.com/Digital-Defiance/gitdash/tree/main/gitpages-port).
-
-Want your own? See [SETUP.md](SETUP.md): use this repository as a template, turn on Pages, and paste a token.
-
-## How it works
-
-```
-content/*.json  ──►  gitdash-pages build-db  ──►  data.db (SQLite)  ──►  astro build  ──►  dist/client  ──►  Pages
- (this repo)         emdash init + import        throwaway, in CI       static pages
-```
-
-- `content/` is the source of truth: one JSON file per post or page in `content/ec_*/`, plus the schema, settings, menus, and taxonomies. Edit a file, push, and the site rebuilds.
-- `data.db` is rebuilt from `content/` on every build and is not committed.
-- `.github/workflows/pages.yml` builds and deploys. It sets `BASE_PATH` so links work under `/<repo>/`.
-
-## Edit from the browser
-
-Open `https://<owner>.github.io/<repo>/studio/`. It runs EmDash's own admin in the browser with no server: its API runs in the page on SQLite compiled to WebAssembly, loaded from `content/`. Edits collect as pending changes (a toolbar icon shows the count and lists each new, edited or deleted item, with Discard). Sign in with a fine-grained token (Contents: read and write, this repo only; kept in the tab and only sent to `api.github.com`), or with GitHub if you set that up (SETUP.md section 10), and **Commit** writes everything as one commit. The Action then rebuilds the site. If someone else pushed meanwhile, your changes are kept and "Update my copy" folds theirs in. Pending changes survive a reload.
-
-Limits: schema changes (new content types or fields) can be committed but not merged or discarded, and users, passkeys and other server-only screens do nothing here.
-
-## Run it locally
-
-```bash
-npm install
-npm run build        # builds data.db from content/, then the static site into dist/client
+```sh
+npm ci
+npm run build
 npm run preview
 ```
 
-## Turn on Pages (once)
+GitDash expects JSON files inside `content/`. If macOS Finder creates `content/.DS_Store`, move it out before building or build from a clean checkout.
 
-Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+Edit Home, Portfolio and Support under **Pages**, the music catalog under **Posts**, and navigation under **Menus**. The **Fonts** collection controls typography through GitDash Fonts. It loads Inter from `custom-fonts/` and uses the original Adobe Fonts web project for the Baskerville URW headings and navigation. The Smithland palette and layout are ported in `src/styles/theme.css` and the Astro templates.
 
-## What else it does
+The November 16, 2026 WordPress migration preserved post dates, the Music category, Jessica Mulein's byline, cover art and YouTube embeds. The Capabilities page is a draft. GitDash includes draft data in its Studio snapshot, so anyone who can read that snapshot or the repository can read the draft. The public build does not render a page for it.
 
-SETUP.md walks through each of these, all optional:
+The GitDash redirect table retains the dated WordPress post URLs, `/portfolio/`, `/support/` and `/feed/`. The Media Library uses optimized WebP copies from the Jetpack backup. Full-resolution files and the original WordPress site backup are kept locally outside version control.
 
-- scheduled posts (hourly workflow), webhooks and plugin cron jobs, importing a Jekyll site or Markdown folder, responsive images, search (Pagefind), sitemap, robots and redirects;
-- comments (below), a contact form (below), and "Sign in with GitHub" for the studio.
-
-The build scripts and the studio live in the npm package [`@digitaldefiance/gitdash-pages`](https://www.npmjs.com/package/@digitaldefiance/gitdash-pages); the patched admin, core and browser API come from the `pages-v*` release assets on `Digital-Defiance/gitdash` (see `package.json` `overrides`). Run `npm test` for unit tests and `npm run test:e2e` for the browser suite.
-
-## Contact form
-
-A `/contact` page appears when `contact.json` holds a form `endpoint` (a form service or your own Worker, `worker/contact-worker.mjs`) or an `issueRepo` (messages become public GitHub issues). Copy `contact.example.json`; see SETUP.md section 9.
-
-## Comments (giscus)
-
-Posts show a [giscus](https://giscus.app) discussion thread when `giscus.json` exists. Commenters need a GitHub account. To turn it on:
-
-1. Enable Discussions on the repository and install the [giscus app](https://github.com/apps/giscus).
-2. Open giscus.app, enter the repository, pick a category, and copy `data-repo-id` and `data-category-id`.
-3. Copy `giscus.example.json` to `giscus.json`, fill in the four values, and commit it.
-
-Without `giscus.json` there is no comment section.
-
-Live site: https://digital-defiance.github.io/GitDash-example/
-
-Regenerate `content/` from a local EmDash database with `npm run export-content` after editing in `emdash dev` or the CLI.
+See [SETUP.md](SETUP.md) for hosting, Studio sign-in and optional integrations.

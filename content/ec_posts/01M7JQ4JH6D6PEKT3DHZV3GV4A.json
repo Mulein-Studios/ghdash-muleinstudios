@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/1y3DA06IeQo\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:54:57.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6504MW8446B8S1ZDM\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"eye3000-213.webp\"}}",
+	"id": "01M7JQ4JH6D6PEKT3DHZV3GV4A",
+	"live_revision_id": "01M7JQ4JH6CW1HAAHZKSXK1CJR",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:54:57.000Z",
+	"scheduled_at": null,
+	"slug": "the-unblinking-eye",
+	"status": "published",
+	"title": "The Unblinking Eye",
+	"translation_group": "01M7JQ4JH6D6PEKT3DHZV3GV4A",
+	"updated_at": "2026-08-26T13:24:53.000Z",
+	"version": 1
+}

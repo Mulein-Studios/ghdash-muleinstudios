@@ -28,7 +28,9 @@ const href = `/posts/${post.id}`;
 const titleId = `post-${variant}-${post.id}`;
 const title = post.data.title || "Untitled";
 const publishedAt = post.data.publishedAt ?? null;
-const readingTime = formatReadingTime(getReadingTime(post.data.content));
+const readingTime = post.data.content?.some((block) => block._type === "block")
+	? formatReadingTime(getReadingTime(post.data.content))
+	: null;
 const bylines = post.data.bylines ?? [];
 const visibleTags = tags.slice(0, variant === "card" ? 2 : 3);
 
@@ -65,7 +67,7 @@ const sizes = {
 						</time>
 					)
 				}
-				<span>{readingTime}</span>
+				{readingTime && <span>{readingTime}</span>}
 			</span>
 			<Heading class="post__title" id={titleId} {...post.edit.title}>
 				{title}

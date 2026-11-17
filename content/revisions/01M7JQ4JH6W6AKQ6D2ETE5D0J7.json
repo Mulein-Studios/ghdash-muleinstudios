@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-29T14:11:20.000Z",
+	"data": "{\"title\":\"Take Back the Keys\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/tgY-YB7w6qE\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6A2VHAF7AMR1WB2J2\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-rn0p5prn0p5prn0p-266.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6V0EZ194K85K27ZDG",
+	"id": "01M7JQ4JH6W6AKQ6D2ETE5D0J7",
+	"kind": null
+}

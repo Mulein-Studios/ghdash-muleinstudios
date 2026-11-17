@@ -1,13 +1,10 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 
-test("the team page lists members in order, with a filter and a page per member", () => {
+test("the team page renders without the sample team members", () => {
 	const html = readFileSync("dist/client/team/index.html", "utf8");
-	const names = ["Ada Rivera", "Ben Okafor", "Chen Wu"].map((n) => html.indexOf(n));
-	assert.ok(names.every((i) => i > 0), "all members listed");
-	assert.deepEqual(names, names.toSorted((a, b) => a - b), "sorted by the order field");
-	assert.match(html, /data-department="Engineering"/);
-	const member = readFileSync("dist/client/team/ben-okafor/index.html", "utf8");
-	assert.match(member, /Lead Developer/);
+	assert.match(html, /<h1[^>]*>Team<\/h1>/);
+	for (const name of ["Ada Rivera", "Ben Okafor", "Chen Wu"]) assert.ok(!html.includes(name), name);
+	assert.equal(existsSync("dist/client/team/ben-okafor/index.html"), false);
 });

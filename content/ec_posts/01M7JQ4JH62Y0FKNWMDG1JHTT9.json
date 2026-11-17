@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"A rendition of Road Less Traveled (which was a poem I wrote in high school). I am trans and much of my poetry was focused around the pain and impending loss of transition- which did in fact occur.\"}]},{\"_type\":\"embed\",\"_key\":\"b2\",\"url\":\"https://youtu.be/ZGe7URZsmgs?si=0HzlAmAS9vmFGQZF\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-29T21:07:02.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH64Z3EQ6ZDC5TQ4GDQ\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"road-less-traveled-3000-311.webp\"}}",
+	"id": "01M7JQ4JH62Y0FKNWMDG1JHTT9",
+	"live_revision_id": "01M7JQ4JH6KPAVZQTQFF6SWX55",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-29T21:07:02.000Z",
+	"scheduled_at": null,
+	"slug": "the-road-less-traveled",
+	"status": "published",
+	"title": "The Road Less Traveled",
+	"translation_group": "01M7JQ4JH62Y0FKNWMDG1JHTT9",
+	"updated_at": "2026-08-30T21:07:40.000Z",
+	"version": 1
+}

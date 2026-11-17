@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-29T14:07:39.000Z",
+	"data": "{\"title\":\"Blame Canada (Again)\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://www.youtube.com/watch?v=8pe8V0W4EME\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6JSXFPMWEZ9J7B8G5\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"flag-of-canada-258.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6TD7HEBT5HXMRC0V0",
+	"id": "01M7JQ4JH62EANXGM1E1NM4H4A",
+	"kind": null
+}

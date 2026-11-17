@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/wsTW5GHx1MY\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:56:10.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH61350YYC7C4X7Z7PH\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"1787525393410-3000-211.webp\"}}",
+	"id": "01M7JQ4JH6ZPQ5ZJ0ANH07R8ZW",
+	"live_revision_id": "01M7JQ4JH6K3M8R63VWZM6H7R8",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:56:10.000Z",
+	"scheduled_at": null,
+	"slug": "the-outrage-machine",
+	"status": "published",
+	"title": "The Outrage Machine",
+	"translation_group": "01M7JQ4JH6ZPQ5ZJ0ANH07R8ZW",
+	"updated_at": "2026-08-26T13:21:42.000Z",
+	"version": 1
+}

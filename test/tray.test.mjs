@@ -28,7 +28,7 @@ test("the snapshot is byte-identical to the files in content/", () => {
 test("an edit shows as modified and discarding it restores the baseline", () => {
 	const { db, freshNames } = open();
 	const base = snapshot(db, freshNames);
-	db.exec("update ec_posts set title = 'Changed' where slug = 'work-in-progress'");
+	db.exec("update ec_posts set title = 'Changed' where slug = 'hope'");
 	const diff = diffFiles(base, snapshot(db, freshNames));
 	assert.equal(diff.length, 1);
 	assert.equal(diff[0].kind, "modified");
@@ -40,7 +40,7 @@ test("an edit shows as modified and discarding it restores the baseline", () => 
 test("a new row is added, and deleting a row is a deletion", () => {
 	const { db, freshNames } = open();
 	const base = snapshot(db, freshNames);
-	db.exec("delete from ec_posts where slug = 'work-in-progress'");
+	db.exec("delete from ec_posts where slug = 'hope'");
 	const diff = diffFiles(base, snapshot(db, freshNames));
 	assert.deepEqual(diff.map((d) => d.kind), ["deleted"]);
 	applyFile(db, diff[0].path, base.get(diff[0].path));
@@ -86,7 +86,7 @@ test("revisions are one file per row, so saving one post changes one revision fi
 test("a revision of a changed post is folded into the post's change, and discard restores both", () => {
 	const { db, freshNames } = open();
 	const base = snapshot(db, freshNames);
-	const post = db.selectObject("select id from ec_posts where slug = 'work-in-progress'");
+	const post = db.selectObject("select id from ec_posts where slug = 'hope'");
 	db.exec({ sql: "update ec_posts set title = 'Changed' where id = ?", bind: [post.id] });
 	db.exec({ sql: "insert into revisions (id, collection, entry_id, data, created_at) values ('rev-test', 'posts', ?, '{\"title\":\"Changed\"}', '2026-01-01 00:00:00')", bind: [post.id] });
 	const cur = snapshot(db, freshNames);
@@ -107,7 +107,7 @@ test("a column added by a schema change can be restored into a freshly loaded da
 	const first = open();
 	const base = snapshot(first.db, first.freshNames);
 	first.db.exec("alter table ec_posts add column accent_color TEXT");
-	first.db.exec("update ec_posts set accent_color = '#ff0000' where slug = 'work-in-progress'");
+	first.db.exec("update ec_posts set accent_color = '#ff0000' where slug = 'hope'");
 	const saved = snapshot(first.db, first.freshNames);
 	const changed = diffFiles(base, saved).map((c) => c.path);
 
@@ -116,7 +116,7 @@ test("a column added by a schema change can be restored into a freshly loaded da
 	applyDdl(second.db, saved.get("_ddl.json"));
 	for (const path of changed) applyFile(second.db, path, saved.get(path));
 	assert.deepEqual(diffFiles(saved, snapshot(second.db, second.freshNames)).filter((c) => c.path !== "_ddl.json"), []);
-	assert.equal(second.db.selectValue("select accent_color from ec_posts where slug = 'work-in-progress'"), "#ff0000");
+	assert.equal(second.db.selectValue("select accent_color from ec_posts where slug = 'hope'"), "#ff0000");
 });
 
 test("encrypted plugin secret settings never show up as a change", () => {

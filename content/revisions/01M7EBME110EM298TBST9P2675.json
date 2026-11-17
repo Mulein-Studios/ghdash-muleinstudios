@@ -2,7 +2,7 @@
 	"author_id": "team",
 	"collection": "fonts",
 	"created_at": "2026-11-15 01:02:34",
-	"data": "{\"title\":\"Site fonts\",\"body_font\":\"Inter\",\"heading_font\":\"Libre Baskerville\",\"weights\":\"400,700\",\"subsets\":\"latin\",\"heading_weight\":\"400\"}",
+	"data": "{\"title\":\"Site fonts\",\"body_font\":\"Inter\",\"heading_font\":\"baskerville-urw\",\"weights\":\"400,500,600,700\",\"subsets\":\"latin\",\"heading_weight\":\"700\",\"adobe_kit\":\"cmd7xjw\",\"adobe_families\":\"baskerville-urw\",\"custom_selectors\":\".site-nav a | baskerville-urw | 400\\n.site-footer__links a | baskerville-urw | 400\",\"base_size\":\"17px\",\"line_height\":\"1.6\"}",
 	"edited_by": null,
 	"entry_id": "01M7EBME128AG0KE0ACJ5W3Q9T",
 	"id": "01M7EBME110EM298TBST9P2675",

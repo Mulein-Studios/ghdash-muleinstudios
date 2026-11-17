@@ -59,9 +59,9 @@ async function openStudio(page: Page) {
 	await expect(page.getByTestId("tray-button")).toBeVisible({ timeout: 30_000 });
 }
 
-async function editWorkInProgress(page: Page, title: string) {
-	await page.getByRole("link", { name: "Posts" }).first().click();
-	await page.getByText(/Work in Progress|Tray edit/).first().click();
+async function editDraftPage(page: Page, title: string) {
+	await page.getByRole("link", { name: "Pages" }).first().click();
+	await page.getByText(/Capabilities|Tray edit/).first().click();
 	await page.getByLabel("Title").first().fill(title);
 	await page.getByRole("button", { name: /^Save/ }).first().click();
 	await expect(page.getByText("Saved")).toBeVisible();
@@ -78,7 +78,7 @@ test.describe("pending-changes tray", () => {
 	test("starts empty, counts an edit, and discard puts it back", async ({ page }) => {
 		await openStudio(page);
 		await expect(page.getByTestId("tray-count")).toHaveText("0");
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await expect(page.getByTestId("tray-count")).toHaveText("1");
 		await page.getByTestId("tray-button").click();
 		await expect(page.getByTestId("tray-list")).toContainText("Edited");
@@ -89,7 +89,7 @@ test.describe("pending-changes tray", () => {
 
 	test("the token prompt explains which token to create", async ({ page }) => {
 		await openStudio(page);
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await page.getByTestId("tray-button").click();
 		await page.getByText("What token do I need?").click();
 		const link = page.getByRole("link", { name: "Create a fine-grained token" });
@@ -99,7 +99,7 @@ test.describe("pending-changes tray", () => {
 
 	test("pending changes survive a reload", async ({ page }) => {
 		await openStudio(page);
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await expect(page.getByTestId("tray-count")).toHaveText("1");
 		await page.reload();
 		await expect(page.getByTestId("tray-button")).toBeVisible({ timeout: 30_000 });
@@ -111,7 +111,7 @@ test.describe("pending-changes tray", () => {
 		await fakeGitHub(page, fake);
 		const parent = fake.head;
 		await openStudio(page);
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await page.getByTestId("tray-button").click();
 		await page.getByLabel(/GitHub token/).fill("ghp_faketoken");
 		await page.getByRole("button", { name: "Sign in" }).click();
@@ -122,20 +122,20 @@ test.describe("pending-changes tray", () => {
 		expect(fake.commits[0]!.message).toBe("Edit the draft");
 		expect(fake.commits[0]!.parent).toBe(parent);
 		expect(fake.commits[0]!.tree).toHaveLength(1);
-		expect(fake.commits[0]!.tree[0]!.path).toMatch(/^content\/ec_posts\/.+\.json$/);
+		expect(fake.commits[0]!.tree[0]!.path).toMatch(/^content\/ec_pages\/.+\.json$/);
 		expect(JSON.parse(fake.commits[0]!.tree[0]!.content!).title).toBe("Tray edit");
 		await expect(page.getByTestId("tray-count")).toHaveText("0");
 	});
 
 	test("a moved branch keeps my changes and merges the upstream ones", async ({ page }) => {
 		const files = contentFiles();
-		const others = Object.keys(files).filter((p) => p.startsWith("ec_posts/") && !files[p]!.includes("Work in Progress"));
+		const others = Object.keys(files).filter((p) => p.startsWith("ec_posts/") && files[p]!.includes("The Ecstasy of Gold"));
 		const theirs = JSON.parse(files[others[0]!]!);
 		const remoteFiles = { ...files, [others[0]!]: JSON.stringify({ ...theirs, title: "Changed upstream" }, null, "\t") + "\n" };
 		const fake: Fake = { head: "someone-else-pushed", commits: [], remoteFiles };
 		await fakeGitHub(page, fake);
 		await openStudio(page);
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await page.getByTestId("tray-button").click();
 		await page.getByLabel(/GitHub token/).fill("ghp_faketoken");
 		await page.getByRole("button", { name: "Sign in" }).click();
@@ -192,14 +192,14 @@ test.describe("pending-changes tray", () => {
 		await expect(page.getByTestId("tray-count")).toHaveText("0");
 	});
 
-	test("scheduling a post shows up as a pending change", async ({ page }) => {
+	test("scheduling a draft page shows up as a pending change", async ({ page }) => {
 		await openStudio(page);
 		const result = await page.evaluate(async () => {
 			const { fetch: f, apiBase } = (globalThis as any).__EMDASH_PATHS__;
 			const h = { "X-EmDash-Request": "1", "Content-Type": "application/json" };
-			const list = await (await f(`${apiBase}/content/posts?status=draft&limit=5`, { headers: h })).json();
+			const list = await (await f(`${apiBase}/content/pages?status=draft&limit=5`, { headers: h })).json();
 			const id = list.data.items[0].id;
-			const res = await f(`${apiBase}/content/posts/${id}/schedule`, { method: "POST", headers: h, body: JSON.stringify({ scheduledAt: "2099-01-01T00:00:00.000Z" }) });
+			const res = await f(`${apiBase}/content/pages/${id}/schedule`, { method: "POST", headers: h, body: JSON.stringify({ scheduledAt: "2099-01-01T00:00:00.000Z" }) });
 			return { status: res.status, item: (await res.json()).data?.item };
 		});
 		expect(result.status).toBe(200);
@@ -240,7 +240,9 @@ test.describe("sign in with GitHub", () => {
 		await page.route("**/studio/**", async (route) => {
 			if (route.request().resourceType() !== "document") return route.fallback();
 			const res = await route.fetch();
-			const body = (await res.text()).replace("connect-src 'self'", "connect-src 'self' https://signin.test");
+			const body = (await res.text())
+				.replace(/<meta name="studio-oauth"[^>]*>/, "")
+				.replace("connect-src 'self'", "connect-src 'self' https://signin.test");
 			return route.fulfill({ response: res, body });
 		});
 		let authorize: URL | undefined;
@@ -257,7 +259,7 @@ test.describe("sign in with GitHub", () => {
 		});
 
 		await openStudio(page);
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await page.getByTestId("tray-button").click();
 		await page.getByTestId("tray-github-signin").click();
 		await expect.poll(() => authorize?.searchParams.get("client_id")).toBe("Iv1.test");
@@ -277,7 +279,7 @@ test.describe("sign in with GitHub", () => {
 
 	test("without a configured sign-in there is only the token form", async ({ page }) => {
 		await openStudio(page);
-		await editWorkInProgress(page, "Tray edit");
+		await editDraftPage(page, "Tray edit");
 		await page.getByTestId("tray-button").click();
 		await expect(page.getByLabel(/GitHub token/)).toBeVisible();
 		await expect(page.getByTestId("tray-github-signin")).toHaveCount(0);

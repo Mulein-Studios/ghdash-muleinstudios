@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "pages",
+	"created_at": "2025-10-10T04:42:56.000Z",
+	"data": "{\"title\":\"Support\",\"content\":[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"Our apps come with limited support as our time is finite and our apps are mostly provided for the community for free, or for just enough to cover the bills.\\n\"},{\"_type\":\"span\",\"_key\":\"b1-s2\",\"text\":\"We can't guarantee any particular timeframe for response, but generally within one business day (M-F).\\n\"},{\"_type\":\"span\",\"_key\":\"b1-s3\",\"text\":\"Primary means of contact is \"},{\"_type\":\"span\",\"_key\":\"b1-s4\",\"text\":\"support@muleinstudios.com\",\"marks\":[\"b1-m1\"]},{\"_type\":\"span\",\"_key\":\"b1-s5\",\"text\":\" but you may catch someone at \"},{\"_type\":\"span\",\"_key\":\"b1-s6\",\"text\":\"253-457-9440\",\"marks\":[\"b1-m2\"]},{\"_type\":\"span\",\"_key\":\"b1-s7\",\"text\":\".\"}],\"markDefs\":[{\"_type\":\"link\",\"_key\":\"b1-m1\",\"href\":\"mailto:support@muleinstudios.com\",\"blank\":true},{\"_type\":\"link\",\"_key\":\"b1-m2\",\"href\":\"tel:253-457-9440\",\"blank\":true}]}]}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6D6WDQQ2F9ZRXKS72",
+	"id": "01M7JQ4JH66A6R5WE2ACKTRC18",
+	"kind": null
+}

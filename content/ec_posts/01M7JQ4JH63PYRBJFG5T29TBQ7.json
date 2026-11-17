@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/muesLMsT5E4\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-29T14:12:46.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6862Z3NP4BGWEG9SR\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-ktjth2ktjth2ktjt-271.webp\"}}",
+	"id": "01M7JQ4JH63PYRBJFG5T29TBQ7",
+	"live_revision_id": "01M7JQ4JH67EXWNCM48F0590JF",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-29T14:12:46.000Z",
+	"scheduled_at": null,
+	"slug": "three-minutes-to-midnight",
+	"status": "published",
+	"title": "Three Minutes to Midnight",
+	"translation_group": "01M7JQ4JH63PYRBJFG5T29TBQ7",
+	"updated_at": "2026-08-29T14:12:46.000Z",
+	"version": 1
+}

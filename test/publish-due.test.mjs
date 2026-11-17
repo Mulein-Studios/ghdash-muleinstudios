@@ -14,10 +14,10 @@ test("a scheduled post that is due gets published at its scheduled time and one 
 	const db = join(dir, "x.db");
 	cli("build-db", db);
 	const raw = new DatabaseSync(db);
-	const [due, later] = raw.prepare("select id from ec_posts where status = 'draft' order by id").all().map((r) => r.id);
-	assert.ok(due && later, "the fixture needs two draft posts");
-	raw.prepare("update ec_posts set status = 'scheduled', scheduled_at = ? where id = ?").run("2026-01-02T03:04:05.000Z", due);
-	raw.prepare("update ec_posts set status = 'scheduled', scheduled_at = ? where id = ?").run("2099-01-01T00:00:00.000Z", later);
+	const [due, later] = raw.prepare("select id from ec_posts order by id limit 2").all().map((r) => r.id);
+	assert.ok(due && later, "the fixture needs two posts");
+	raw.prepare("update ec_posts set status = 'scheduled', scheduled_at = ?, published_at = null, draft_revision_id = live_revision_id, live_revision_id = null where id = ?").run("2026-01-02T03:04:05.000Z", due);
+	raw.prepare("update ec_posts set status = 'scheduled', scheduled_at = ?, published_at = null, draft_revision_id = live_revision_id, live_revision_id = null where id = ?").run("2099-01-01T00:00:00.000Z", later);
 	raw.close();
 
 	const out = join(dir, "content");

@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/tnw0xpzgGBg\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T03:01:07.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6DY3E75HFX2TKH6CJ\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"civilwar3000-205.webp\"}}",
+	"id": "01M7JQ4JH697P48HR4FFVE3VD2",
+	"live_revision_id": "01M7JQ4JH6AXPYCGRJ3KT6CJGS",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T03:01:07.000Z",
+	"scheduled_at": null,
+	"slug": "civil-war",
+	"status": "published",
+	"title": "Civil War",
+	"translation_group": "01M7JQ4JH697P48HR4FFVE3VD2",
+	"updated_at": "2026-08-26T13:13:43.000Z",
+	"version": 1
+}

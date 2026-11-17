@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/VJBa4bFSPdA\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:58:36.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH6G89FZTNE45QG0J1Y\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-chbpmmchbpmmchbp-208.webp\"}}",
+	"id": "01M7JQ4JH6GWMG1B37Q15THWPF",
+	"live_revision_id": "01M7JQ4JH6646FA14A2MF4N12C",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:58:36.000Z",
+	"scheduled_at": null,
+	"slug": "the-trolley-problem",
+	"status": "published",
+	"title": "The Trolley Problem",
+	"translation_group": "01M7JQ4JH6GWMG1B37Q15THWPF",
+	"updated_at": "2026-08-26T13:17:35.000Z",
+	"version": 1
+}

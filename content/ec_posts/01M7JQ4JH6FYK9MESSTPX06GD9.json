@@ -1,0 +1,21 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"Written in 2000 brought to music in 2026\"}]},{\"_type\":\"embed\",\"_key\":\"b2\",\"url\":\"https://youtu.be/BPd3nqJPeag\",\"provider\":\"youtube\"}]",
+	"created_at": "2026-08-26T02:51:16.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"excerpt": null,
+	"featured_image": "{\"id\":\"01M7JQ4JH62SAH5HDJA3FFFCE4\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-tbeqf9tbeqf9tbeq-222.webp\"}}",
+	"id": "01M7JQ4JH6FYK9MESSTPX06GD9",
+	"live_revision_id": "01M7JQ4JH6JKAHPVCQNDA5VM6X",
+	"locale": "en",
+	"primary_byline_id": "01M7JQ4JH6CDJ8B1M9E7NCBB53",
+	"published_at": "2026-08-26T02:51:16.000Z",
+	"scheduled_at": null,
+	"slug": "giving-up",
+	"status": "published",
+	"title": "Giving Up",
+	"translation_group": "01M7JQ4JH6FYK9MESSTPX06GD9",
+	"updated_at": "2026-08-30T14:11:01.000Z",
+	"version": 1
+}

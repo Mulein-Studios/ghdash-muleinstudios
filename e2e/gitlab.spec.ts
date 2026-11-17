@@ -21,7 +21,9 @@ async function asGitLabSite(page: Page, fake: Fake) {
 	});
 	await page.route(/\/studio\/(\?.*)?$/, async (route) => {
 		const res = await route.fetch();
-		const html = (await res.text()).replace("https://api.github.com", "https://gitlab.com");
+		const html = (await res.text())
+			.replace(/<meta name="studio-oauth"[^>]*>/, "")
+			.replace("https://api.github.com", "https://gitlab.com");
 		await route.fulfill({ response: res, body: html });
 	});
 	await page.route(`${API}/**`, async (route) => {
@@ -59,9 +61,9 @@ async function asGitLabSite(page: Page, fake: Fake) {
 	});
 }
 
-async function editWorkInProgress(page: Page, title: string) {
-	await page.getByRole("link", { name: "Posts" }).first().click();
-	await page.getByText(/Work in Progress|Tray edit/).first().click();
+async function editDraftPage(page: Page, title: string) {
+	await page.getByRole("link", { name: "Pages" }).first().click();
+	await page.getByText(/Capabilities|Tray edit/).first().click();
 	await page.getByLabel("Title").first().fill(title);
 	await page.getByRole("button", { name: /^Save/ }).first().click();
 	await expect(page.getByText("Saved")).toBeVisible();
@@ -72,15 +74,15 @@ test("on GitLab the studio asks for a GitLab token and commits through the GitLa
 	await asGitLabSite(page, fake);
 	await page.goto("studio/");
 	await expect(page.getByTestId("tray-button")).toBeVisible({ timeout: 30_000 });
-	await editWorkInProgress(page, "Edited on GitLab");
+	await editDraftPage(page, "Edited on GitLab");
 	const parent = fake.head;
 	await page.getByTestId("tray-button").click();
 	await expect(page.getByTestId("tray-github-signin")).toHaveCount(0);
 	await page.getByText("What token do I need?").click();
 	await expect(page.getByRole("link", { name: "Create a personal access token" })).toHaveAttribute("href", /gitlab\.com\/-\/user_settings\/personal_access_tokens\?.*scopes=api/);
-	fake.existing = readdirSync("content/ec_posts").map((f) => `content/ec_posts/${f}`);
+	fake.existing = readdirSync("content/ec_pages").map((f) => `content/ec_pages/${f}`);
 	await page.getByLabel(/GitLab token/).fill("glpat-fake");
-	await page.getByRole("button", { name: "Sign in" }).click();
+	await page.getByRole("button", { name: "Sign in", exact: true }).click();
 	await page.getByLabel("Commit message").fill("Edit from GitLab");
 	await page.getByRole("button", { name: /^Commit/ }).click();
 	await expect(page.getByTestId("tray-done")).toBeVisible();
@@ -91,7 +93,7 @@ test("on GitLab the studio asks for a GitLab token and commits through the GitLa
 	expect(fake.commits[0]!.branch).toBe("main");
 	const [action] = fake.commits[0]!.actions;
 	expect(fake.commits[0]!.actions).toHaveLength(1);
-	expect(action!.file_path).toMatch(/^content\/ec_posts\/.+\.json$/);
+	expect(action!.file_path).toMatch(/^content\/ec_pages\/.+\.json$/);
 	expect(action!.action).toBe("update");
 	expect((action as Action & { last_commit_id?: string }).last_commit_id).toBe(`last-of-${action!.file_path}`);
 	expect(JSON.parse(action!.content!).title).toBe("Edited on GitLab");
@@ -105,7 +107,7 @@ test("a GitLab token that can't push to the branch is refused at sign-in", async
 	await expect(page.getByTestId("tray-button")).toBeVisible({ timeout: 30_000 });
 	await page.getByTestId("tray-button").click();
 	await page.getByLabel(/GitLab token/).fill("glpat-fake");
-	await page.getByRole("button", { name: "Sign in" }).click();
+	await page.getByRole("button", { name: "Sign in", exact: true }).click();
 	await expect(page.getByRole("alert")).toContainText("can read the repository but not push");
 });
 

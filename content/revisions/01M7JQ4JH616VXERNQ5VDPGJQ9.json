@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:19:04.000Z",
+	"data": "{\"title\":\"Presidential Red White and Blues\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/8kr7sXeFu00\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH61080HAJVAS9EDKCC\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"gemini-generated-image-iwr14diwr14diwr1-209.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6A153P3EB4K9GYB7E",
+	"id": "01M7JQ4JH616VXERNQ5VDPGJQ9",
+	"kind": null
+}

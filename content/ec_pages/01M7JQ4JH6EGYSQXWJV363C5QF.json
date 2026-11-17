@@ -1,0 +1,19 @@
+{
+	"author_id": null,
+	"content": "[{\"_type\":\"block\",\"_key\":\"b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b1-s1\",\"text\":\"We're loaded for bear with top of the line hardware and software.\"}]},{\"_type\":\"columns\",\"_key\":\"b2\",\"columns\":[{\"_type\":\"column\",\"_key\":\"b2-c1\",\"content\":[{\"_type\":\"block\",\"_key\":\"b2-c1-b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c1-b1-s1\",\"text\":\"Software\"}]},{\"_type\":\"block\",\"_key\":\"b2-c1-b2\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c1-b2-s1\",\"text\":\"Final Cut Pro\"}]},{\"_type\":\"block\",\"_key\":\"b2-c1-b3\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c1-b3-s1\",\"text\":\"Logic Pro\"}]},{\"_type\":\"block\",\"_key\":\"b2-c1-b4\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c1-b4-s1\",\"text\":\"Adobe Premiere Pro\"}]},{\"_type\":\"block\",\"_key\":\"b2-c1-b5\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c1-b5-s1\",\"text\":\"Adobe Illustrator\"}]},{\"_type\":\"block\",\"_key\":\"b2-c1-b6\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c1-b6-s1\",\"text\":\"Adobe Photoshop\"}]}]},{\"_type\":\"column\",\"_key\":\"b2-c2\",\"content\":[{\"_type\":\"block\",\"_key\":\"b2-c2-b1\",\"style\":\"normal\",\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c2-b1-s1\",\"text\":\"Hardware\"}]},{\"_type\":\"block\",\"_key\":\"b2-c2-b2\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c2-b2-s1\",\"text\":\"Macbook Pro M4 Max\"}]},{\"_type\":\"block\",\"_key\":\"b2-c2-b3\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c2-b3-s1\",\"text\":\"Microsoft Surface Laptop 5\"}]},{\"_type\":\"block\",\"_key\":\"b2-c2-b4\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c2-b4-s1\",\"text\":\"Presonus Quantum\"}]},{\"_type\":\"block\",\"_key\":\"b2-c2-b5\",\"style\":\"normal\",\"listItem\":\"bullet\",\"level\":1,\"children\":[{\"_type\":\"span\",\"_key\":\"b2-c2-b5-s1\",\"text\":\"Behringer X-Touch\"}]}]}]},{\"_type\":\"image\",\"_key\":\"b3\",\"asset\":{\"_type\":\"reference\",\"_ref\":\"01M7JQ4JH62ZB9RN7ZJZH79T3C\",\"url\":\"/_emdash/api/media/file/image-117.webp\"},\"alt\":\"\",\"width\":1800,\"height\":540},{\"_type\":\"image\",\"_key\":\"b4\",\"asset\":{\"_type\":\"reference\",\"_ref\":\"01M7JQ4JH6E06NKPG6EMMF951Y\",\"url\":\"/_emdash/api/media/file/image-1-118.webp\"},\"alt\":\"\",\"width\":1200,\"height\":818}]",
+	"created_at": "2026-02-03T20:33:07.000Z",
+	"deleted_at": null,
+	"draft_revision_id": null,
+	"id": "01M7JQ4JH6EGYSQXWJV363C5QF",
+	"live_revision_id": null,
+	"locale": "en",
+	"primary_byline_id": null,
+	"published_at": null,
+	"scheduled_at": null,
+	"slug": "capabilities",
+	"status": "draft",
+	"title": "Capabilities",
+	"translation_group": "01M7JQ4JH6EGYSQXWJV363C5QF",
+	"updated_at": "2026-02-03T20:33:07.000Z",
+	"version": 1
+}

@@ -1,0 +1,10 @@
+{
+	"author_id": null,
+	"collection": "posts",
+	"created_at": "2026-08-26T13:24:53.000Z",
+	"data": "{\"title\":\"The Unblinking Eye\",\"content\":[{\"_type\":\"embed\",\"_key\":\"b1\",\"url\":\"https://youtu.be/1y3DA06IeQo\",\"provider\":\"youtube\"}],\"excerpt\":null,\"featured_image\":{\"id\":\"01M7JQ4JH6504MW8446B8S1ZDM\",\"alt\":\"\",\"width\":1800,\"height\":1800,\"meta\":{\"storageKey\":\"eye3000-213.webp\"}}}",
+	"edited_by": null,
+	"entry_id": "01M7JQ4JH6D6PEKT3DHZV3GV4A",
+	"id": "01M7JQ4JH6CW1HAAHZKSXK1CJR",
+	"kind": null
+}
